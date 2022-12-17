@@ -1,8 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectory.WebAPI", "TelephoneDirectory.WebAPI\TelephoneDirectory.WebAPI.csproj", "{D3B7DFF0-5963-4CE7-8C1B-9AB54F57BFF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectory.ReportConsumer", "TelephoneDirectory.ReportConsumer\TelephoneDirectory.ReportConsumer.csproj", "{33206CE9-BB61-43D5-B67F-2B3017A2B014}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3B7DFF0-5963-4CE7-8C1B-9AB54F57BFF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3B7DFF0-5963-4CE7-8C1B-9AB54F57BFF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3B7DFF0-5963-4CE7-8C1B-9AB54F57BFF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3B7DFF0-5963-4CE7-8C1B-9AB54F57BFF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33206CE9-BB61-43D5-B67F-2B3017A2B014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33206CE9-BB61-43D5-B67F-2B3017A2B014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33206CE9-BB61-43D5-B67F-2B3017A2B014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33206CE9-BB61-43D5-B67F-2B3017A2B014}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
