@@ -1,9 +1,9 @@
 ﻿using FastExpressionCompiler;
 using Mapster;
 using TelephoneDirectory.Data.Entities;
-using TelephoneDirectory.WebAPI.Records;
+using TelephoneDirectory.ContactService.Records;
 
-namespace TelephoneDirectory.WebAPI;
+namespace TelephoneDirectory.ContactService;
 
 public static class MappingConfiguration
 {
@@ -16,9 +16,6 @@ public static class MappingConfiguration
         config.NewConfig<Contact, GetContactDetail>();
 
         config.NewConfig<ContactInformation, GetContactInformation>();
-
-        config.NewConfig<Report, GetReport>();
-        config.NewConfig<Report, GetReportDetail>();
 
         config.Compiler = exp => exp.CompileFast();
         config.Compile();

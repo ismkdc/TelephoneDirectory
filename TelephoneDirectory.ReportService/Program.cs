@@ -3,9 +3,9 @@ using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.Data.Extensions;
-using TelephoneDirectory.WebAPI;
-using TelephoneDirectory.WebAPI.Middlewares;
-using TelephoneDirectory.WebAPI.Services;
+using TelephoneDirectory.Infrastructure.Middlewares;
+using TelephoneDirectory.ReportService;
+using TelephoneDirectory.ReportService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,11 +36,10 @@ builder.Services.AddSingleton(config);
 builder.Services.AddSingleton<IMapper, ServiceMapper>();
 
 //register our services
-builder.Services.AddScoped<IContactService, ContactService>();
-builder.Services.AddScoped<IContactInformationService, ContactInformationService>();
 builder.Services.AddScoped<IReportService, ReportService>();
 
 #endregion
+
 
 var app = builder.Build();
 

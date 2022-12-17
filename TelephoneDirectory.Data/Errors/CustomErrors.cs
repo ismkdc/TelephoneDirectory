@@ -1,4 +1,4 @@
-﻿namespace TelephoneDirectory.WebAPI.Errors;
+﻿namespace TelephoneDirectory.Data.Errors;
 
 public static class CustomErrors
 {

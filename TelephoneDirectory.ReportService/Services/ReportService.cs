@@ -4,11 +4,11 @@ using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.Data.Enums;
+using TelephoneDirectory.Data.Errors;
 using TelephoneDirectory.Data.Messages;
-using TelephoneDirectory.WebAPI.Errors;
-using TelephoneDirectory.WebAPI.Records;
+using TelephoneDirectory.ReportService.Records;
 
-namespace TelephoneDirectory.WebAPI.Services;
+namespace TelephoneDirectory.ReportService.Services;
 
 public interface IReportService
 {

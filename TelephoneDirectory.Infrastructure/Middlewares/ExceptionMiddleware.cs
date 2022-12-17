@@ -1,7 +1,9 @@
 ﻿using System.Net;
-using TelephoneDirectory.WebAPI.Errors;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using TelephoneDirectory.Infrastructure.Errors;
 
-namespace TelephoneDirectory.WebAPI.Middlewares;
+namespace TelephoneDirectory.Infrastructure.Middlewares;
 
 public class ExceptionMiddleware
 {

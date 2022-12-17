@@ -1,4 +1,4 @@
-﻿namespace TelephoneDirectory.WebAPI.Errors;
+﻿namespace TelephoneDirectory.Infrastructure.Errors;
 
 public class TelephoneDirectoryException : Exception
 {

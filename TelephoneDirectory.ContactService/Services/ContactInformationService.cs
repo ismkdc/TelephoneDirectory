@@ -1,10 +1,10 @@
 ﻿using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 using TelephoneDirectory.Data.Entities;
-using TelephoneDirectory.WebAPI.Errors;
-using TelephoneDirectory.WebAPI.Records;
+using TelephoneDirectory.ContactService.Records;
+using TelephoneDirectory.Data.Errors;
 
-namespace TelephoneDirectory.WebAPI.Services;
+namespace TelephoneDirectory.ContactService.Services;
 
 public interface IContactInformationService
 {

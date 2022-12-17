@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TelephoneDirectory.WebAPI.Records;
-using TelephoneDirectory.WebAPI.Services;
+using TelephoneDirectory.ContactService.Records;
+using TelephoneDirectory.ContactService.Services;
 
-namespace TelephoneDirectory.WebAPI.Controllers;
+namespace TelephoneDirectory.ContactService.Controllers;
 
 [ApiController]
 [Route("api/contacts")]

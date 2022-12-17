@@ -1,7 +1,7 @@
 ﻿using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.Data.Enums;
 
-namespace TelephoneDirectory.WebAPI.Records;
+namespace TelephoneDirectory.ReportService.Records;
 
 public record GetReport(Guid Id, ReportStatusEnum ReportStatus, DateTime CreatedAt);
 

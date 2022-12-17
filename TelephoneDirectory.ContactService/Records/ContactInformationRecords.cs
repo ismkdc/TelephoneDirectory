@@ -1,6 +1,6 @@
 ﻿using TelephoneDirectory.Data.Enums;
 
-namespace TelephoneDirectory.WebAPI.Records;
+namespace TelephoneDirectory.ContactService.Records;
 
 public record GetContactInformation(Guid Id, ContactInformationTypeEnum ContactInformationType, string Content,
     DateTime CreatedAt);
