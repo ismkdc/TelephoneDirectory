@@ -3,5 +3,11 @@
 public class ReportContent
 {
     public string Location { get; set; }
-    public (string name, string surname)[] Contacts { get; set; }
+    public IEnumerable<ReportContentDetail> Contacts { get; set; }
+}
+
+public class ReportContentDetail
+{
+    public string Name { get; set; }
+    public string Surname { get; set; }
 }

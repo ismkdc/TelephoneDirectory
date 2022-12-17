@@ -9,9 +9,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="EasyNetQ" Version="7.3.5"/>
+        <PackageReference Include="EasyNetQ.Serialization.SystemTextJson" Version="7.3.5"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\TelephoneDirectory.Data\TelephoneDirectory.Data.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -26,28 +26,29 @@ public class ContactService : IContactService
         _mapper = mapper;
     }
 
-    public Task<GetContactDetail?> Get(Guid id) =>
-        _context
+    public Task<GetContactDetail?> Get(Guid id)
+    {
+        return _context
             .Contacts
             .Include(x => x.ContactInformation)
             .Where(x => x.Id == id)
             .ProjectToType<GetContactDetail>(_mapper.Config)
             .AsNoTracking()
             .SingleOrDefaultAsync();
+    }
 
-    public Task<GetContact[]> GetAll() =>
-        _context
+    public Task<GetContact[]> GetAll()
+    {
+        return _context
             .Contacts
             .ProjectToType<GetContact>(_mapper.Config)
             .AsNoTracking()
             .ToArrayAsync();
+    }
 
     public async Task Create(CreateContact model)
     {
-        if (string.IsNullOrWhiteSpace(model.Name))
-        {
-            throw new TelephoneDirectoryException(CustomErrors.E_101);
-        }
+        if (string.IsNullOrWhiteSpace(model.Name)) throw new TelephoneDirectoryException(CustomErrors.E_101);
 
         var entity = _mapper.Map<Contact>(model);
         _context.Contacts.Add(entity);
@@ -61,10 +62,7 @@ public class ContactService : IContactService
             .Contacts
             .SingleOrDefaultAsync(x => x.Id == id);
 
-        if (entity == null)
-        {
-            throw new TelephoneDirectoryException(CustomErrors.E_102);
-        }
+        if (entity == null) throw new TelephoneDirectoryException(CustomErrors.E_102);
 
         await _context
             .ContactInformation

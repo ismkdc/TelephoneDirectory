@@ -8,21 +8,28 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FastExpressionCompiler" Version="3.3.3" />
-        <PackageReference Include="Mapster" Version="7.3.0" />
-        <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.1" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="EasyNetQ.DI.Microsoft" Version="7.3.5"/>
+        <PackageReference Include="EasyNetQ.Serialization.SystemTextJson" Version="7.3.5"/>
+        <PackageReference Include="FastExpressionCompiler" Version="3.3.3"/>
+        <PackageReference Include="Mapster" Version="7.3.0"/>
+        <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.1"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TelephoneDirectory.Data\TelephoneDirectory.Data.csproj" />
+        <ProjectReference Include="..\TelephoneDirectory.Data\TelephoneDirectory.Data.csproj"/>
     </ItemGroup>
 
 </Project>

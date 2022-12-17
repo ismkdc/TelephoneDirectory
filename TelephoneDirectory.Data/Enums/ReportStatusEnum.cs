@@ -3,5 +3,5 @@
 public enum ReportStatusEnum
 {
     Processing = 1,
-    Completed = 2,
+    Completed = 2
 }

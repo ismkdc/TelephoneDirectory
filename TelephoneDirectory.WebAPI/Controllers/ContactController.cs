@@ -5,7 +5,7 @@ using TelephoneDirectory.WebAPI.Services;
 namespace TelephoneDirectory.WebAPI.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/contacts")]
 public class ContactController : ControllerBase
 {
     private readonly IContactService _contactService;

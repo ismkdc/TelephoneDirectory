@@ -1,4 +1,7 @@
+using EasyNetQ;
 using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
+using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.Data.Extensions;
 using TelephoneDirectory.WebAPI;
 using TelephoneDirectory.WebAPI.Middlewares;
@@ -17,7 +20,13 @@ builder.Services.AddSwaggerGen();
 
 //register db context
 builder.Services.AddDbContext(
-    builder.Configuration.GetConnectionString("TelephoneDirectoryPostgresql")
+    builder.Configuration.GetConnectionString("POSTGRESQL_CONNECTION")
+);
+
+//register rabbitmq
+builder.Services.RegisterEasyNetQ(
+    builder.Configuration.GetConnectionString("RABBITMQ_CONNECTION"),
+    x => x.EnableSystemTextJson()
 );
 
 //register mapster
@@ -29,10 +38,16 @@ builder.Services.AddSingleton<IMapper, ServiceMapper>();
 //register our services
 builder.Services.AddScoped<IContactService, ContactService>();
 builder.Services.AddScoped<IContactInformationService, ContactInformationService>();
+builder.Services.AddScoped<IReportService, ReportService>();
 
 #endregion
 
 var app = builder.Build();
+
+// Ensure db is created!
+using var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
+var context = serviceScope.ServiceProvider.GetRequiredService<TelephoneDirectoryContext>();
+context.Database.Migrate();
 
 //register middlewares
 app.UseMiddleware<ExceptionMiddleware>();

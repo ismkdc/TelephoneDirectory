@@ -1,6 +1,6 @@
 ﻿namespace TelephoneDirectory.WebAPI.Errors;
 
-public class TelephoneDirectoryException: Exception
+public class TelephoneDirectoryException : Exception
 {
     public TelephoneDirectoryException(CustomError customError)
     {

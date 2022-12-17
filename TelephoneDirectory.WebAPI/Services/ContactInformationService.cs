@@ -25,16 +25,10 @@ public class ContactInformationService : IContactInformationService
 
     public async Task Create(CreateContactInformation model)
     {
-        if (string.IsNullOrWhiteSpace(model.Content))
-        {
-            throw new TelephoneDirectoryException(CustomErrors.E_103);
-        }
+        if (string.IsNullOrWhiteSpace(model.Content)) throw new TelephoneDirectoryException(CustomErrors.E_103);
 
         var isContentExist = await _context.Contacts.AnyAsync(x => x.Id == model.ContactId);
-        if (!isContentExist)
-        {
-            throw new TelephoneDirectoryException(CustomErrors.E_102);
-        }
+        if (!isContentExist) throw new TelephoneDirectoryException(CustomErrors.E_102);
 
         var contactInformation = _mapper.Map<ContactInformation>(model);
         _context.ContactInformation.Add(contactInformation);
@@ -48,10 +42,7 @@ public class ContactInformationService : IContactInformationService
             .ContactInformation
             .SingleOrDefaultAsync(x => x.Id == id);
 
-        if (entity == null)
-        {
-            throw new TelephoneDirectoryException(CustomErrors.E_102);
-        }
+        if (entity == null) throw new TelephoneDirectoryException(CustomErrors.E_102);
 
         entity.DeletedAt = DateTime.UtcNow;
         await _context.SaveChangesAsync();
