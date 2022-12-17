@@ -1,8 +1,7 @@
-﻿namespace TelephoneDirectory.WebAPI.Models;
+﻿namespace TelephoneDirectory.Data;
 
-public class Contact
+public class Contact : BaseEntity
 {
-    public Guid Id { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
     public string Company { get; set; }
