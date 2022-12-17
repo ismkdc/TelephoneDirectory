@@ -28,6 +28,7 @@ builder.Services.AddSingleton<IMapper, ServiceMapper>();
 
 //register our services
 builder.Services.AddScoped<IContactService, ContactService>();
+builder.Services.AddScoped<IContactInformationService, ContactInformationService>();
 
 #endregion
 

@@ -3,3 +3,4 @@
 namespace TelephoneDirectory.WebAPI.Records;
 
 public record GetContactInformation(Guid Id, ContactInformationTypeEnum ContactInformationType, string Content);
+public record CreateContactInformation(Guid ContactId, ContactInformationTypeEnum ContactInformationType, string Content);
