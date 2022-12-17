@@ -1,6 +1,6 @@
 ﻿using TelephoneDirectory.Data.Enums;
 
-namespace TelephoneDirectory.Data;
+namespace TelephoneDirectory.Data.Entities;
 
 public class Report : BaseEntity
 {

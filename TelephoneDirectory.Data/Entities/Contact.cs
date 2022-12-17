@@ -1,4 +1,4 @@
-﻿namespace TelephoneDirectory.Data;
+﻿namespace TelephoneDirectory.Data.Entities;
 
 public class Contact : BaseEntity
 {
