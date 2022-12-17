@@ -9,7 +9,7 @@ namespace TelephoneDirectory.WebAPI.Services;
 
 public interface IContactService
 {
-    public Task<GetContact?> Get(Guid id);
+    public Task<GetContactDetail?> Get(Guid id);
     public Task<GetContact[]> GetAll();
     public Task Create(CreateContact model);
     public Task Delete(Guid id);
@@ -26,11 +26,12 @@ public class ContactService : IContactService
         _mapper = mapper;
     }
 
-    public Task<GetContact?> Get(Guid id) =>
+    public Task<GetContactDetail?> Get(Guid id) =>
         _context
             .Contacts
+            .Include(x => x.ContactInformation)
             .Where(x => x.Id == id)
-            .ProjectToType<GetContact>(_mapper.Config)
+            .ProjectToType<GetContactDetail>(_mapper.Config)
             .AsNoTracking()
             .SingleOrDefaultAsync();
 
