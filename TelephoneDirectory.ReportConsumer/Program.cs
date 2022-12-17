@@ -4,8 +4,14 @@ using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.Data.Enums;
 using TelephoneDirectory.Data.Messages;
 
+#if DEBUG
+var rabbitMqConnection = "host=localhost";
+var postgresConnection =
+    "Host=localhost;Database=phonedirectory_db;Username=phonedirectory_usr;Password=PZLqwVFf8YkwqRhq?PZLqwVFf8Y_dev";
+#else
 var rabbitMqConnection = Environment.GetEnvironmentVariable("RABBITMQ_CONNECTION");
 var postgresConnection = Environment.GetEnvironmentVariable("POSTGRESQL_CONNECTION");
+#endif
 
 var contextOptions = new DbContextOptionsBuilder<TelephoneDirectoryContext>()
     .UseNpgsql(postgresConnection)
@@ -39,7 +45,14 @@ async Task GenerateReport()
         .Select(x => new ReportContent
         {
             Location = x.Key,
-            Contacts = x.Select(y => new ReportContentDetail { Name = y.Contact.Name, Surname = y.Contact.Surname })
+            ContactCount = x.Count(),
+            PhoneNumberCount = context
+                .ContactInformation
+                // Sum of all phone numbers for each location
+                .Sum(y => y.ContactInformationType == ContactInformationTypeEnum.PhoneNumber &&
+                          x.Select(c => c.ContactId).Contains(y.ContactId)
+                    ? 1
+                    : 0)
         })
         .AsNoTracking()
         .ToArrayAsync();
