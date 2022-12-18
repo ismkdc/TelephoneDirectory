@@ -1,9 +1,9 @@
 ﻿using FastExpressionCompiler;
 using Mapster;
 using TelephoneDirectory.Data.Entities;
-using TelephoneDirectory.ReportService.Records;
+using TelephoneDirectory.ReportAPI.Records;
 
-namespace TelephoneDirectory.ReportService;
+namespace TelephoneDirectory.ReportAPI;
 
 public static class MappingConfiguration
 {

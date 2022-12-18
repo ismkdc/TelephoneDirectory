@@ -1,13 +1,13 @@
 ﻿using Mapster;
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
-using TelephoneDirectory.ContactService.Records;
+using TelephoneDirectory.ContactAPI.Records;
 using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.Data.Enums;
-using TelephoneDirectory.Data.Errors;
 using TelephoneDirectory.Data.Records;
+using TelephoneDirectory.Infrastructure.Errors;
 
-namespace TelephoneDirectory.ContactService.Services;
+namespace TelephoneDirectory.ContactAPI.Services;
 
 public interface IContactService
 {
@@ -60,11 +60,9 @@ public class ContactService : IContactService
                 x.Count(),
                 _context
                     .ContactInformation
-                    // Sum of all phone numbers for each location
-                    .Sum(y => y.ContactInformationType == ContactInformationTypeEnum.PhoneNumber &&
-                              x.Select(c => c.ContactId).Contains(y.ContactId)
-                        ? 1
-                        : 0)
+                    // Count of all phone numbers for each location
+                    .Count(y => y.ContactInformationType == ContactInformationTypeEnum.PhoneNumber &&
+                                x.Select(c => c.ContactId).Contains(y.ContactId))
             ))
             .AsNoTracking()
             .ToArrayAsync();

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TelephoneDirectory.Data.Messages;
-using TelephoneDirectory.ReportService.Services;
+using TelephoneDirectory.ReportAPI.Services;
 
-namespace TelephoneDirectory.ReportService.Controllers;
+namespace TelephoneDirectory.ReportAPI.Controllers;
 
 [ApiController]
 [Route("api/reports")]

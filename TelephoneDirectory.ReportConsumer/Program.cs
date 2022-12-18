@@ -1,8 +1,6 @@
 ﻿using System.Net.Http.Json;
 using ClosedXML.Excel;
 using EasyNetQ;
-using Microsoft.EntityFrameworkCore;
-using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.Data.Messages;
 using TelephoneDirectory.Data.Records;
 
@@ -14,27 +12,19 @@ const string reportServiceBaseUrl = "http://localhost:5138";
 const string reportDirectory = "/reports";
 
 const string rabbitMqConnection = "host=localhost";
-const string postgresConnection =
-    "Host=localhost;Database=phonedirectory_db;Username=phonedirectory_usr;Password=PZLqwVFf8YkwqRhq?PZLqwVFf8Y_dev";
 #else
 const string contactServiceBaseUrl = Environment.GetEnvironmentVariable("CONTACT_SERVICE_BASE_URL");
 const string reportServiceBaseUrl = Environment.GetEnvironmentVariable("REPORT_SERVICE_BASE_URL");
 const string reportDirectory = Environment.GetEnvironmentVariable("REPORT_DIRECTORY");
 
 const string rabbitMqConnection = Environment.GetEnvironmentVariable("RABBITMQ_CONNECTION");
-const string postgresConnection = Environment.GetEnvironmentVariable("POSTGRESQL_CONNECTION");
 #endif
 
 #endregion
 
-var contextOptions = new DbContextOptionsBuilder<TelephoneDirectoryContext>()
-    .UseNpgsql(postgresConnection)
-    .Options;
-
 var bus = RabbitHutch.CreateBus(rabbitMqConnection,
     x => x.EnableSystemTextJson()
 );
-var context = new TelephoneDirectoryContext(contextOptions);
 
 await bus.PubSub.SubscribeAsync<ReportMessage>(
     Environment.MachineName, GenerateReport

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.Data.Enums;
 using TelephoneDirectory.Data.Messages;
-using TelephoneDirectory.ReportService.Records;
+using TelephoneDirectory.ReportAPI.Records;
 
-namespace TelephoneDirectory.ReportService.Services;
+namespace TelephoneDirectory.ReportAPI.Services;
 
 public interface IReportService
 {

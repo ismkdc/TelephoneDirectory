@@ -10,9 +10,13 @@ public class TelephoneDirectoryContext : DbContext
     {
     }
 
-    public DbSet<Contact> Contacts { get; set; }
-    public DbSet<ContactInformation> ContactInformation { get; set; }
-    public DbSet<Report> Reports { get; set; }
+    public TelephoneDirectoryContext()
+    {
+    }
+
+    public virtual DbSet<Contact> Contacts { get; set; }
+    public virtual DbSet<ContactInformation> ContactInformation { get; set; }
+    public virtual DbSet<Report> Reports { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

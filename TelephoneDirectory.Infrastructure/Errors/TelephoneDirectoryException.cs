@@ -2,7 +2,7 @@
 
 public class TelephoneDirectoryException : Exception
 {
-    public TelephoneDirectoryException(CustomError customError)
+    public TelephoneDirectoryException(CustomError customError) : base(customError.ErrorMessage)
     {
         CustomError = customError;
     }

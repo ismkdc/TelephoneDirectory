@@ -1,14 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectory.ContactService", "TelephoneDirectory.ContactService\TelephoneDirectory.ContactService.csproj", "{D3B7DFF0-5963-4CE7-8C1B-9AB54F57BFF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectory.ContactAPI", "TelephoneDirectory.ContactAPI\TelephoneDirectory.ContactAPI.csproj", "{D3B7DFF0-5963-4CE7-8C1B-9AB54F57BFF9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectory.ReportConsumer", "TelephoneDirectory.ReportConsumer\TelephoneDirectory.ReportConsumer.csproj", "{33206CE9-BB61-43D5-B67F-2B3017A2B014}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectory.Data", "TelephoneDirectory.Data\TelephoneDirectory.Data.csproj", "{B3DE9015-8DD3-4D23-A00A-D9CF3FC900AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectory.ReportService", "TelephoneDirectory.ReportService\TelephoneDirectory.ReportService.csproj", "{D704BAB0-21FB-4B13-9618-073E94D62406}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectory.ReportAPI", "TelephoneDirectory.ReportAPI\TelephoneDirectory.ReportAPI.csproj", "{D704BAB0-21FB-4B13-9618-073E94D62406}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectory.Infrastructure", "TelephoneDirectory.Infrastructure\TelephoneDirectory.Infrastructure.csproj", "{E36D77C7-31ED-4EF6-B404-6305FEB0BFA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectory.Tests", "TelephoneDirectory.Tests\TelephoneDirectory.Tests.csproj", "{C2ABB08D-7B38-4040-99E5-C230ED0FED76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +38,9 @@ Global
 		{E36D77C7-31ED-4EF6-B404-6305FEB0BFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E36D77C7-31ED-4EF6-B404-6305FEB0BFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E36D77C7-31ED-4EF6-B404-6305FEB0BFA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2ABB08D-7B38-4040-99E5-C230ED0FED76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2ABB08D-7B38-4040-99E5-C230ED0FED76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2ABB08D-7B38-4040-99E5-C230ED0FED76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2ABB08D-7B38-4040-99E5-C230ED0FED76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

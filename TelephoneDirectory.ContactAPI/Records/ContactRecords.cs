@@ -1,4 +1,4 @@
-﻿namespace TelephoneDirectory.ContactService.Records;
+﻿namespace TelephoneDirectory.ContactAPI.Records;
 
 public record CreateContact(string Name, string Surname, string Company);
 
