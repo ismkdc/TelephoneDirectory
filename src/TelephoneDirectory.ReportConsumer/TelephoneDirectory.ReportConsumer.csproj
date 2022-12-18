@@ -9,19 +9,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="..\.dockerignore">
-            <Link>.dockerignore</Link>
-        </Content>
+        <PackageReference Include="ClosedXML" Version="0.97.0" />
+        <PackageReference Include="EasyNetQ" Version="7.3.5" />
+        <PackageReference Include="EasyNetQ.Serialization.SystemTextJson" Version="7.3.5" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ClosedXML" Version="0.97.0"/>
-        <PackageReference Include="EasyNetQ" Version="7.3.5"/>
-        <PackageReference Include="EasyNetQ.Serialization.SystemTextJson" Version="7.3.5"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\TelephoneDirectory.Data\TelephoneDirectory.Data.csproj"/>
+        <ProjectReference Include="..\TelephoneDirectory.Data\TelephoneDirectory.Data.csproj" />
     </ItemGroup>
 
 </Project>
