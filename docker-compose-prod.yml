@@ -27,6 +27,7 @@ services:
             - prod
         ports: 
             - 127.0.0.1:15672:15672
+            
     contact-api:
         build:
             dockerfile: dockerfile-contact-api
@@ -40,6 +41,7 @@ services:
             - prod
         ports: 
             - 127.0.0.1:8080:80
+            
     report-api:
         build:
             dockerfile: dockerfile-report-api
@@ -55,6 +57,7 @@ services:
             - /reports:/reports
         ports: 
             - 127.0.0.1:8081:80
+            
     report-consumer:
         build:
             dockerfile: dockerfile-report-consumer
