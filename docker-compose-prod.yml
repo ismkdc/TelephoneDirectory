@@ -1,0 +1,78 @@
+version: '3.9'
+services:  
+    postgres:
+        image: postgres:15-alpine
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: PZLqwVFf8YkwqRhq?PZLqwVFf8Y_prod
+            POSTGRES_USER: phonedirectory_usr
+            POSTGRES_DB: phonedirectory_db
+        networks:
+            - prod
+
+    adminer:
+        image: adminer
+        restart: always
+        depends_on: 
+            - postgres
+        networks:
+            - prod
+        ports: 
+            - 127.0.0.1:8282:8080
+            
+    rabbitmq:
+        image: rabbitmq:3-management-alpine
+        restart: always
+        networks:
+            - prod
+        ports: 
+            - 127.0.0.1:15672:15672
+    contact-api:
+        build:
+            dockerfile: dockerfile-contact-api
+        restart: always
+        depends_on:
+            - postgres
+            - report-api
+        environment:
+            ASPNETCORE_ENVIRONMENT: Prod
+        networks:
+            - prod
+        ports: 
+            - 127.0.0.1:8080:80
+    report-api:
+        build:
+            dockerfile: dockerfile-report-api
+        restart: always
+        depends_on:
+            - postgres
+            - rabbitmq
+        environment:
+            ASPNETCORE_ENVIRONMENT: Prod
+        networks:
+            - prod
+        volumes:
+            - /reports:/reports
+        ports: 
+            - 127.0.0.1:8081:80
+    report-consumer:
+        build:
+            dockerfile: dockerfile-report-consumer
+        restart: always
+        depends_on:
+            - report-api
+            - contact-api
+            - rabbitmq
+        environment:
+            ASPNETCORE_ENVIRONMENT: Prod
+            CONTACT_SERVICE_BASE_URL: http://contact-api
+            REPORT_SERVICE_BASE_URL: http://report-api
+            REPORT_DIRECTORY: /reports
+            RABBITMQ_CONNECTION: host=rabbitmq
+        networks:
+            - prod
+        volumes:
+            - /reports:/reports
+
+networks:
+    prod:

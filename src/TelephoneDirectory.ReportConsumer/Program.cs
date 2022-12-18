@@ -13,11 +13,11 @@ const string reportDirectory = "/reports";
 
 const string rabbitMqConnection = "host=localhost";
 #else
-const string contactServiceBaseUrl = Environment.GetEnvironmentVariable("CONTACT_SERVICE_BASE_URL");
-const string reportServiceBaseUrl = Environment.GetEnvironmentVariable("REPORT_SERVICE_BASE_URL");
-const string reportDirectory = Environment.GetEnvironmentVariable("REPORT_DIRECTORY");
+string contactServiceBaseUrl = Environment.GetEnvironmentVariable("CONTACT_SERVICE_BASE_URL");
+string reportServiceBaseUrl = Environment.GetEnvironmentVariable("REPORT_SERVICE_BASE_URL");
+string reportDirectory = Environment.GetEnvironmentVariable("REPORT_DIRECTORY");
 
-const string rabbitMqConnection = Environment.GetEnvironmentVariable("RABBITMQ_CONNECTION");
+string rabbitMqConnection = Environment.GetEnvironmentVariable("RABBITMQ_CONNECTION");
 #endif
 
 #endregion
@@ -30,7 +30,7 @@ await bus.PubSub.SubscribeAsync<ReportMessage>(
     Environment.MachineName, GenerateReport
 );
 
-Console.ReadKey();
+await Task.Run(() => Thread.Sleep(Timeout.Infinite));
 
 async Task GenerateReport(ReportMessage message)
 {
