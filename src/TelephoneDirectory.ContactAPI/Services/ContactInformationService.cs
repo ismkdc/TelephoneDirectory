@@ -23,7 +23,7 @@ public class ContactInformationService : IContactInformationService
         _mapper = mapper;
     }
 
-    public async Task  Create(CreateContactInformation model)
+    public async Task Create(CreateContactInformation model)
     {
         if (string.IsNullOrWhiteSpace(model.Content)) throw new TelephoneDirectoryException(CustomErrors.E_103);
 
