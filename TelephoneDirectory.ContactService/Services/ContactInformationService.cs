@@ -1,7 +1,7 @@
 ﻿using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
-using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.ContactService.Records;
+using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.Data.Errors;
 
 namespace TelephoneDirectory.ContactService.Services;

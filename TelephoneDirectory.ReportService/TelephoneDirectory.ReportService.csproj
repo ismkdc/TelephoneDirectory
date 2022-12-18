@@ -18,14 +18,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TelephoneDirectory.Data\TelephoneDirectory.Data.csproj" />
-      <ProjectReference Include="..\TelephoneDirectory.Infrastructure\TelephoneDirectory.Infrastructure.csproj" />
+        <ProjectReference Include="..\TelephoneDirectory.Data\TelephoneDirectory.Data.csproj" />
+        <ProjectReference Include="..\TelephoneDirectory.Infrastructure\TelephoneDirectory.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

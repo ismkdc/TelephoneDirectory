@@ -1,6 +1,7 @@
 using EasyNetQ;
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.Data.Extensions;
 using TelephoneDirectory.Infrastructure.Middlewares;
@@ -18,28 +19,27 @@ builder.Services.AddSwaggerGen();
 
 #region Dependency Injection
 
-//register db context
+// Register db context
 builder.Services.AddDbContext(
     builder.Configuration.GetConnectionString("POSTGRESQL_CONNECTION")
 );
 
-//register rabbitmq
+// Register rabbitmq
 builder.Services.RegisterEasyNetQ(
     builder.Configuration.GetConnectionString("RABBITMQ_CONNECTION"),
     x => x.EnableSystemTextJson()
 );
 
-//register mapster
+// Register mapster
 var config = MappingConfiguration.Generate();
 
 builder.Services.AddSingleton(config);
 builder.Services.AddSingleton<IMapper, ServiceMapper>();
 
-//register our services
+// Register our services
 builder.Services.AddScoped<IReportService, ReportService>();
 
 #endregion
-
 
 var app = builder.Build();
 
@@ -48,8 +48,15 @@ using var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateS
 var context = serviceScope.ServiceProvider.GetRequiredService<TelephoneDirectoryContext>();
 context.Database.Migrate();
 
-//register middlewares
+// Register middlewares
 app.UseMiddleware<ExceptionMiddleware>();
+
+// Expose file path
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(app.Configuration.GetValue<string>("ReportPath")),
+    RequestPath = "/Reports"
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

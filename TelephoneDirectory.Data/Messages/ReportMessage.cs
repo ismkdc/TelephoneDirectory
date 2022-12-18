@@ -1,5 +1,3 @@
 ﻿namespace TelephoneDirectory.Data.Messages;
 
-public class ReportMessage
-{
-}
+public record ReportMessage(Guid Id, string FilePath);

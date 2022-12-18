@@ -1,9 +1,11 @@
 ﻿using Mapster;
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
-using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.ContactService.Records;
+using TelephoneDirectory.Data.Entities;
+using TelephoneDirectory.Data.Enums;
 using TelephoneDirectory.Data.Errors;
+using TelephoneDirectory.Data.Records;
 
 namespace TelephoneDirectory.ContactService.Services;
 
@@ -11,6 +13,7 @@ public interface IContactService
 {
     public Task<GetContactDetail?> Get(Guid id);
     public Task<GetContact[]> GetAll();
+    Task<GetReportContent[]> GetReportData();
     public Task Create(CreateContact model);
     public Task Delete(Guid id);
 }
@@ -42,6 +45,27 @@ public class ContactService : IContactService
         return _context
             .Contacts
             .ProjectToType<GetContact>(_mapper.Config)
+            .AsNoTracking()
+            .ToArrayAsync();
+    }
+
+    public Task<GetReportContent[]> GetReportData()
+    {
+        return _context.ContactInformation
+            .Where(x => x.ContactInformationType == ContactInformationTypeEnum.Location)
+            .GroupBy(x => x.Content)
+            .Select(x => new GetReportContent
+            (
+                x.Key,
+                x.Count(),
+                _context
+                    .ContactInformation
+                    // Sum of all phone numbers for each location
+                    .Sum(y => y.ContactInformationType == ContactInformationTypeEnum.PhoneNumber &&
+                              x.Select(c => c.ContactId).Contains(y.ContactId)
+                        ? 1
+                        : 0)
+            ))
             .AsNoTracking()
             .ToArrayAsync();
     }

@@ -1,7 +1,7 @@
 ﻿using FastExpressionCompiler;
 using Mapster;
-using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.ContactService.Records;
+using TelephoneDirectory.Data.Entities;
 
 namespace TelephoneDirectory.ContactService;
 

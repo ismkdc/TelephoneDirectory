@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="ClosedXML" Version="0.97.0"/>
         <PackageReference Include="EasyNetQ" Version="7.3.5"/>
         <PackageReference Include="EasyNetQ.Serialization.SystemTextJson" Version="7.3.5"/>
     </ItemGroup>

@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TelephoneDirectory.Data.Messages;
 using TelephoneDirectory.ReportService.Services;
 
-namespace TelephoneDirectory.ContactService.Controllers;
+namespace TelephoneDirectory.ReportService.Controllers;
 
 [ApiController]
 [Route("api/reports")]
@@ -12,13 +13,6 @@ public class ReportController : ControllerBase
     public ReportController(IReportService reportService)
     {
         _reportService = reportService;
-    }
-
-    [HttpGet("{id:guid}")]
-    public async Task<IActionResult> Get([FromRoute] Guid id)
-    {
-        var result = await _reportService.Get(id);
-        return Ok(result);
     }
 
     [HttpGet]
@@ -32,6 +26,13 @@ public class ReportController : ControllerBase
     public async Task<IActionResult> Generate()
     {
         await _reportService.Generate();
+        return Ok();
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Complete([FromBody] ReportMessage message)
+    {
+        await _reportService.Complete(message);
         return Ok();
     }
 }

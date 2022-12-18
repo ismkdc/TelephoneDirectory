@@ -1,9 +1,9 @@
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
-using TelephoneDirectory.Data.Entities;
-using TelephoneDirectory.Data.Extensions;
 using TelephoneDirectory.ContactService;
 using TelephoneDirectory.ContactService.Services;
+using TelephoneDirectory.Data.Entities;
+using TelephoneDirectory.Data.Extensions;
 using TelephoneDirectory.Infrastructure.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);

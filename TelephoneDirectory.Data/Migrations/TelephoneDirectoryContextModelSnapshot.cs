@@ -29,7 +29,6 @@ namespace TelephoneDirectory.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Company")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("CreatedAt")
@@ -43,7 +42,6 @@ namespace TelephoneDirectory.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Surname")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -86,14 +84,14 @@ namespace TelephoneDirectory.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<ReportContent[]>("Content")
-                        .HasColumnType("jsonb");
-
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("FilePath")
+                        .HasColumnType("text");
 
                     b.Property<int>("ReportStatus")
                         .HasColumnType("integer");

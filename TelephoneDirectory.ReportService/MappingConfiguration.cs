@@ -12,7 +12,6 @@ public static class MappingConfiguration
         var config = new TypeAdapterConfig();
 
         config.NewConfig<Report, GetReport>();
-        config.NewConfig<Report, GetReportDetail>();
 
         config.Compiler = exp => exp.CompileFast();
         config.Compile();

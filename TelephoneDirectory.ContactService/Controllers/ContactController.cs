@@ -22,6 +22,13 @@ public class ContactController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("getReportData")]
+    public async Task<IActionResult> GetReportData()
+    {
+        var result = await _contactService.GetReportData();
+        return Ok(result);
+    }
+
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {

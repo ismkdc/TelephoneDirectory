@@ -4,7 +4,6 @@ using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 using TelephoneDirectory.Data.Entities;
 using TelephoneDirectory.Data.Enums;
-using TelephoneDirectory.Data.Errors;
 using TelephoneDirectory.Data.Messages;
 using TelephoneDirectory.ReportService.Records;
 
@@ -12,9 +11,9 @@ namespace TelephoneDirectory.ReportService.Services;
 
 public interface IReportService
 {
-    Task<GetReportDetail> Get(Guid id);
     Task Generate();
     Task<GetReport[]> GetAll();
+    Task Complete(ReportMessage message);
 }
 
 public class ReportService : IReportService
@@ -30,29 +29,40 @@ public class ReportService : IReportService
         _bus = bus;
     }
 
-    public async Task<GetReportDetail> Get(Guid id)
+    public async Task Generate()
     {
-        var entity = await _context
-            .Reports
-            .AsNoTracking()
-            .SingleOrDefaultAsync(x => x.Id == id && x.ReportStatus == ReportStatusEnum.Completed);
+        var report = new Report
+        {
+            ReportStatus = ReportStatusEnum.Processing
+        };
 
-        if (entity == null) throw new TelephoneDirectoryException(CustomErrors.E_102);
+        _context.Reports.Add(report);
+        await _context.SaveChangesAsync();
 
-        return _mapper.Map<GetReportDetail>(entity.Content);
-    }
-
-    public Task Generate()
-    {
-        return _bus.PubSub.PublishAsync(new ReportMessage());
+        await _bus.PubSub.PublishAsync(new ReportMessage(report.Id, ""));
     }
 
     public Task<GetReport[]> GetAll()
     {
         return _context
-            .Contacts
+            .Reports
             .ProjectToType<GetReport>(_mapper.Config)
             .AsNoTracking()
             .ToArrayAsync();
+    }
+
+    public async Task Complete(ReportMessage message)
+    {
+        var report = _context
+            .Reports
+            .SingleOrDefault(x => x.Id == message.Id);
+
+        if (report != null && !string.IsNullOrEmpty(message.FilePath))
+        {
+            report.FilePath = message.FilePath;
+            report.ReportStatus = ReportStatusEnum.Completed;
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

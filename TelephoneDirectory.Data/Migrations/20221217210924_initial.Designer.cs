@@ -12,7 +12,7 @@ using TelephoneDirectory.Data.Entities;
 namespace TelephoneDirectory.Data.Migrations
 {
     [DbContext(typeof(TelephoneDirectoryContext))]
-    [Migration("20221217171327_initial")]
+    [Migration("20221217210924_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -32,7 +32,6 @@ namespace TelephoneDirectory.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Company")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("CreatedAt")
@@ -46,7 +45,6 @@ namespace TelephoneDirectory.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Surname")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -89,14 +87,14 @@ namespace TelephoneDirectory.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<ReportContent[]>("Content")
-                        .HasColumnType("jsonb");
-
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("FilePath")
+                        .HasColumnType("text");
 
                     b.Property<int>("ReportStatus")
                         .HasColumnType("integer");
