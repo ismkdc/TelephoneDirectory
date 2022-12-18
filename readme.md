@@ -29,8 +29,8 @@ You can then access the following URLs:
 
 ## Credentials
 
--   RabbitMQ: username: `guest`, password: `guest`
--   Database: username: `phonedirectory_usr`, password: `PZLqwVFf8YkwqRhq?PZLqwVFf8Y_prod`, database name: `phonedirectory_db`
+-   RabbitMQ GUI: username: `guest`, password: `guest`
+-   Adminer (database GUI): server: postgres username: `phonedirectory_usr`, password: `PZLqwVFf8YkwqRhq?PZLqwVFf8Y_prod`, database name: `phonedirectory_db`
 
 ## Development
 
