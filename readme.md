@@ -22,8 +22,8 @@ To start the application, execute the following command in the root directory of
 
 You can then access the following URLs:
 
--   Contract API: [http://localhost:8080](http://localhost:8080/)
--   Report API: [http://localhost:8081](http://localhost:8081/)
+-   Contract API Swagger UI: [http://localhost:8080/swagger](http://localhost:8080/swagger)
+-   Report API Swagger UI: [http://localhost:808/swagger1](http://localhost:8081/swagger)
 -   Adminer (database GUI): [http://localhost:8282](http://localhost:8282/)
 -   RabbitMQ GUI: [http://localhost:15672](http://localhost:15672/)
 
