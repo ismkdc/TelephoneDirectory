@@ -1,7 +1,14 @@
 
-# TelephoneDirectory
+TelephoneDirectory is a microservice-based application for managing a directory of telephone numbers. It consists of two microservices: contract and report, and a consumer. The contract microservice is responsible for managing the telephone directory data and exposes a REST API for creating, reading, updating, and deleting entries in the directory. The report microservice is responsible for generating reports based on the directory data and also exposes a REST API for requesting reports. The consumer is a background worker that listens for messages on a message queue and processes them. In this case, it listens for requests for reports and generates them using the report microservice.
 
-TelephoneDirectory is a microservice-based application for managing a directory of telephone numbers. It consists of two microservices: contract and report, and a consumer.
+This application is built using ASP.NET Core and can be easily deployed using Docker and Docker Compose. It also includes a database and message queue for storing and processing data.
+
+## Features
+
+-   Create, read, update, and delete entries in the telephone directory
+-   Generate reports based on the directory data
+-   Asynchronous processing of report requests using a message queue
+-   Deployable as a set of Docker containers
 
 ## Prerequisites
 
@@ -11,11 +18,7 @@ TelephoneDirectory is a microservice-based application for managing a directory 
 
 To start the application, execute the following command in the root directory of the project:
 
-Copy code
-
 `docker-compose -f docker-compose-prod.yml up --build -d` 
-
-This will build and start the three microservices and their dependencies (database and message queue) in Docker containers.
 
 You can then access the following URLs:
 
@@ -33,14 +36,7 @@ You can then access the following URLs:
 
 To run the application in development mode, execute the following command in the root directory of the project:
 
-Copy code
 
 `docker-compose -f docker-compose-dev.yml up --build` 
 
 This will start the microservices and their dependencies with hot reloading enabled.
-
-## Notes
-
--   The `contract` microservice is responsible for managing the telephone directory data. It exposes a REST API for creating, reading, updating, and deleting entries in the directory.
--   The `report` microservice is responsible for generating reports based on the directory data. It also exposes a REST API for requesting reports.
--   The `consumer` is a background worker that listens for messages on a message queue and processes them. In this case, it listens for requests for reports and generates them using the `report` microservice.
